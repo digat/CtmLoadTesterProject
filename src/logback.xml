@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">                                                                                                                                                              
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">                                                                                                                                                                
+            <!-- Daily rollover -->                                                                                                                                                                                                                 
+            <fileNamePattern>logs/TPlog-%d{yyyy-MM-dd}.log</fileNamePattern>                                                                                                                                                                     
+                                                                                                                                                                                                                                              
+            <!-- Keep 7 days' worth of history -->                                                                                                                                                                                                  
+            <maxHistory>7</maxHistory>                                                                                                                                                                                                              
+        </rollingPolicy>                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                              
+        <encoder>                                                                                                                                                                                                                                 
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>                                                                                                                                                             
+        </encoder>                                                                                                                                                                                                                                
+    </appender>     
+    <logger name="com.zaxxer.hikari">
+        <level value="INFO"/>
+    </logger>
+    <logger name="com.microsoft.sqlserver.jdbc">
+        <level value="INFO"/>
+    </logger>
+    <root level="INFO">
+        <!--appender-ref ref="STDOUT"/-->
+        <appender-ref ref="FILE" />
+    </root>
+    <root level="ERROR">
+        <!--appender-ref ref="SzTDOUT"/-->
+        <appender-ref ref="FILE" />
+    </root>
+    <root level="WARN">
+        <!--appender-ref ref="STDOUT"/-->
+        <appender-ref ref="FILE" />
+    </root>    
+    <root level="DEBUG">          
+        <appender-ref ref="FILE" />
+    </root>      
+</configuration>
